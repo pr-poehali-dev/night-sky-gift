@@ -2,100 +2,625 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap");
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+:root {
+  --cosmos-bg-deep: #0b0b1a;
+  --cosmos-bg-mid: #1a0f2e;
+  --cosmos-lavender: #b794f4;
+  --cosmos-lavender-dim: rgba(183, 148, 244, 0.35);
+  --cosmos-gold: #f9c35c;
+  --cosmos-text: #f0eaf8;
+  --cosmos-text-dim: rgba(240, 234, 248, 0.6);
+  --cosmos-white: #ffffff;
+  --cosmos-popup-bg: rgba(14, 10, 30, 0.96);
+  --cosmos-card-border: rgba(183, 148, 244, 0.3);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+  --background: 240 30% 8%;
+  --foreground: 270 40% 95%;
+  --card: 240 30% 8%;
+  --card-foreground: 270 40% 95%;
+  --popover: 240 30% 8%;
+  --popover-foreground: 270 40% 95%;
+  --primary: 270 60% 75%;
+  --primary-foreground: 240 30% 8%;
+  --secondary: 270 30% 15%;
+  --secondary-foreground: 270 40% 95%;
+  --muted: 270 20% 15%;
+  --muted-foreground: 270 20% 60%;
+  --accent: 270 60% 75%;
+  --accent-foreground: 240 30% 8%;
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 270 30% 20%;
+  --input: 270 30% 20%;
+  --ring: 270 60% 75%;
+  --radius: 0.75rem;
+}
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+body {
+  background: var(--cosmos-bg-deep);
+  color: var(--cosmos-text);
+  font-family: "Raleway", sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+/* ── ROOT ──────────────────────────────────────── */
+.cosmos-root {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(
+    160deg,
+    #0b0b1a 0%,
+    #14082a 40%,
+    #1a0f2e 70%,
+    #0d0a1f 100%
+  );
+  overflow: hidden;
+}
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+/* ── DECO STARS ────────────────────────────────── */
+.deco-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+.deco-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: twinkle linear infinite alternate;
+}
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+@keyframes twinkle {
+  0% {
+    opacity: 0.15;
+    transform: scale(0.8);
   }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+/* ── MILKY WAY / NEBULA ───────────────────────── */
+.milky-way {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(
+      ellipse 80% 30% at 50% 40%,
+      rgba(120, 70, 200, 0.12) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 20% at 30% 60%,
+      rgba(160, 90, 230, 0.08) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 25% at 70% 30%,
+      rgba(100, 60, 180, 0.1) 0%,
+      transparent 70%
+    );
+}
+
+.nebula-2 {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(
+      ellipse 40% 15% at 20% 70%,
+      rgba(183, 148, 244, 0.07) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 35% 18% at 80% 55%,
+      rgba(140, 90, 220, 0.06) 0%,
+      transparent 70%
+    );
+}
+
+/* ── METEORS ──────────────────────────────────── */
+.meteor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 2;
+  width: 120px;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(183, 148, 244, 0.6) 100%
+  );
+  border-radius: 2px;
+  opacity: 0;
+  animation: meteor-fly linear infinite;
+  box-shadow: 0 0 6px 1px rgba(183, 148, 244, 0.5);
+}
+
+@keyframes meteor-fly {
+  0% {
+    opacity: 0;
+    transform: rotate(inherit) translateX(0);
+  }
+  5% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0;
+    transform: rotate(inherit) translateX(300px);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(inherit) translateX(300px);
+  }
+}
+
+/* ── HEADER ───────────────────────────────────── */
+.cosmos-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: clamp(60px, 10vw, 100px) 24px clamp(20px, 4vw, 40px);
+}
+
+.cosmos-eyebrow {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(10px, 2vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  color: var(--cosmos-lavender);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0.85;
+}
+
+.cosmos-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(72px, 15vw, 160px);
+  font-weight: 300;
+  line-height: 0.9;
+  color: var(--cosmos-text);
+  letter-spacing: -0.02em;
+  text-shadow:
+    0 0 60px rgba(183, 148, 244, 0.4),
+    0 0 120px rgba(183, 148, 244, 0.15);
+  animation: title-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes title-glow {
+  0% {
+    text-shadow:
+      0 0 40px rgba(183, 148, 244, 0.3),
+      0 0 80px rgba(183, 148, 244, 0.1);
+  }
+  100% {
+    text-shadow:
+      0 0 80px rgba(183, 148, 244, 0.6),
+      0 0 160px rgba(183, 148, 244, 0.25);
+  }
+}
+
+.cosmos-subtitle {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(13px, 2.5vw, 17px);
+  font-weight: 300;
+  color: var(--cosmos-text-dim);
+  margin-top: 20px;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+}
+
+/* ── STAR MAP ─────────────────────────────────── */
+.map-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.map-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 7;
+}
+
+@media (max-width: 640px) {
+  .map-wrap {
+    aspect-ratio: 4 / 5;
+    max-width: 100%;
+  }
+}
+
+.map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.conn-line {
+  animation: conn-pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes conn-pulse {
+  0% {
+    stroke-opacity: 0.12;
+  }
+  100% {
+    stroke-opacity: 0.35;
+  }
+}
+
+/* ── STAR POINTS ──────────────────────────────── */
+.star-point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 20;
+  transition: transform 0.2s ease;
+}
+
+.star-point:hover {
+  transform: translate(-50%, -50%) scale(1.3);
+}
+.star-point--lit {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.sp-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(183, 148, 244, 0.3) 0%,
+    transparent 70%
+  );
+  animation: sp-breathe 2.5s ease-in-out infinite;
+}
+
+.star-point--lit .sp-pulse {
+  background: radial-gradient(
+    circle,
+    rgba(183, 148, 244, 0.6) 0%,
+    transparent 70%
+  );
+  animation: sp-breathe 1s ease-in-out infinite;
+}
+
+@keyframes sp-breathe {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 1;
+  }
+}
+
+.sp-core {
+  position: relative;
+  font-size: clamp(14px, 2.5vw, 22px);
+  color: var(--cosmos-lavender);
+  filter: drop-shadow(0 0 6px rgba(183, 148, 244, 0.8));
+  line-height: 1;
+  transition:
+    color 0.2s,
+    filter 0.2s;
+  z-index: 1;
+}
+
+.star-point:hover .sp-core,
+.star-point--lit .sp-core {
+  color: #fff;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9));
+}
+
+.sp-name {
+  position: relative;
+  z-index: 1;
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(7px, 1.2vw, 11px);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--cosmos-text-dim);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+.star-point:hover .sp-name,
+.star-point--lit .sp-name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── FOOTER ───────────────────────────────────── */
+.cosmos-footer {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: clamp(40px, 8vw, 80px) 24px clamp(60px, 12vw, 120px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-quote {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 2.5vw, 22px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cosmos-text-dim);
+  line-height: 1.75;
+  max-width: 560px;
+  letter-spacing: 0.02em;
+}
+
+.footer-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(36px, 8vw, 72px);
+  font-weight: 300;
+  color: var(--cosmos-text);
+  letter-spacing: 0.04em;
+  margin-top: 12px;
+  text-shadow: 0 0 40px rgba(183, 148, 244, 0.35);
+}
+
+.footer-sign {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(13px, 2vw, 16px);
+  font-weight: 400;
+  color: var(--cosmos-lavender);
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+}
+
+/* ── APPLE ────────────────────────────────────── */
+.apple-wrap {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.apple-wrap:hover {
+  transform: scale(1.15);
+}
+
+.apple-halo {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(249, 195, 92, 0.25) 0%,
+    transparent 70%
+  );
+  animation: apple-glow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes apple-glow {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+.apple-emoji {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(36px, 6vw, 52px);
+  filter: drop-shadow(0 0 12px rgba(249, 195, 92, 0.7));
+  animation: apple-float 3s ease-in-out infinite;
+}
+
+@keyframes apple-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ── OVERLAY ──────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(5, 3, 16, 0.82);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fade-in 0.25s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── POPUP ────────────────────────────────────── */
+.popup-card {
+  position: relative;
+  background: var(--cosmos-popup-bg);
+  border: 1px solid var(--cosmos-card-border);
+  border-radius: 20px;
+  padding: clamp(32px, 6vw, 52px) clamp(28px, 5vw, 48px);
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow:
+    0 0 60px rgba(183, 148, 244, 0.15),
+    0 0 120px rgba(183, 148, 244, 0.06),
+    inset 0 0 40px rgba(183, 148, 244, 0.04);
+  animation: popup-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popup-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.popup-x {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--cosmos-text-dim);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+  transition:
+    color 0.2s,
+    transform 0.2s;
+}
+
+.popup-x:hover {
+  color: var(--cosmos-text);
+  transform: rotate(90deg);
+}
+
+.popup-star-ico {
+  font-size: 32px;
+  color: var(--cosmos-lavender);
+  filter: drop-shadow(0 0 10px rgba(183, 148, 244, 0.8));
+  margin-bottom: 16px;
+  animation: sp-breathe 2s ease-in-out infinite;
+}
+
+.popup-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 400;
+  color: var(--cosmos-text);
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+.popup-body {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(14px, 2.2vw, 17px);
+  font-weight: 300;
+  color: var(--cosmos-text-dim);
+  line-height: 1.85;
+  letter-spacing: 0.03em;
+  margin-bottom: 20px;
+}
+
+.popup-num {
+  font-family: "Raleway", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cosmos-lavender);
+  opacity: 0.6;
+}
+
+/* ── APPLE POPUP ──────────────────────────────── */
+.popup-apple {
+  border-color: rgba(249, 195, 92, 0.3);
+  box-shadow:
+    0 0 60px rgba(249, 195, 92, 0.1),
+    inset 0 0 40px rgba(249, 195, 92, 0.04);
+}
+
+.apple-big {
+  font-size: 64px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 20px rgba(249, 195, 92, 0.6));
+  animation: apple-float 2s ease-in-out infinite;
+}
+
+.apple-msg {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 6vw, 44px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cosmos-text);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 30px rgba(249, 195, 92, 0.3);
+}
+
+/* ── RESPONSIVE TWEAKS ────────────────────────── */
+@media (max-width: 640px) {
+  .sp-name {
+    display: none;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  .star-point {
+    padding: 8px;
+  }
+
+  .sp-core {
+    font-size: 16px;
+  }
+
+  .map-wrap {
+    aspect-ratio: 3 / 4;
   }
 }
