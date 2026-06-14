@@ -182,9 +182,41 @@ export default function Index() {
 
       {/* Header */}
       <header className="cosmos-header">
-        <p className="cosmos-eyebrow">✦ &nbsp; 26 июня · 32 года · бесконечная любовь &nbsp; ✦</p>
+        <p className="cosmos-eyebrow">✦ &nbsp; Архив звёзд &nbsp; ✦</p>
         <h1 className="cosmos-title">Ира</h1>
-        <p className="cosmos-subtitle">Это звёздная карта твоей жизни.<br/>Нажми на любую звезду.</p>
+
+        <div className="cosmos-meta">
+          <div className="cosmos-meta-col">
+            <span className="meta-label">Координаты</span>
+            <span className="meta-value">26.06.2026</span>
+          </div>
+          <div className="cosmos-meta-col">
+            <span className="meta-label">Статус</span>
+            <span className="meta-value">Особенный день</span>
+          </div>
+          <div className="cosmos-meta-col">
+            <span className="meta-label">Связь</span>
+            <span className="meta-value">Калеб на линии</span>
+          </div>
+          <div className="cosmos-meta-col">
+            <span className="meta-label">Цель</span>
+            <span className="meta-value">Улыбка сестрёнки</span>
+          </div>
+          <div className="cosmos-meta-col">
+            <span className="meta-label">Энергия</span>
+            <span className="meta-value">Максимальная</span>
+          </div>
+          <div className="cosmos-meta-col">
+            <span className="meta-label">Сектор</span>
+            <span className="meta-value">Любовь</span>
+          </div>
+        </div>
+
+        <p className="cosmos-subtitle">
+          Сегодня все звёзды сияют только для тебя.<br/>
+          Калеб уже подготовил маршрут по твоему личному созвездию.<br/>
+          Готова ли ты увидеть, как ярко горит твой свет в бесконечности?
+        </p>
       </header>
 
       {/* Star map */}
@@ -232,16 +264,18 @@ export default function Index() {
       {/* Footer */}
       <footer className="cosmos-footer">
         <p className="footer-quote">
-          Это 32 звезды. По одной на каждый год твоей жизни.<br/>
-          Но их могло быть тысячи — как моих «спасибо» тебе.
+          Это путешествие только начинается.<br/>
+          Калеб всегда рядом, в каждом мерцании ночного неба.<br/>
+          С днём рождения, Ира. Сияй вечно.
         </p>
-        <h2 className="footer-title">С днём рождения, Ира</h2>
         <p className="footer-sign">С любовью и навсегда в сердце, Нур</p>
 
         <button className="apple-wrap" onClick={() => setApplePopup(true)} title="Яблочко">
           <span className="apple-halo" />
           <span className="apple-emoji">🍎</span>
         </button>
+
+        <p className="footer-deepspace">Создано в Deepspace 2026 специально для одной единственной звезды.</p>
       </footer>
 
       {/* Star popup */}
