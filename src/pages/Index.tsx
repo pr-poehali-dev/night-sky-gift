@@ -92,39 +92,17 @@ export default function Index() {
   const [applePopup, setApplePopup] = useState(false);
   const [activeId, setActiveId] = useState<number | null>(null);
   const [musicPlaying, setMusicPlaying] = useState(false);
-  const [musicStarted, setMusicStarted] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    const audio = new Audio("https://cdn.jsdelivr.net/gh/anars/blank-audio@master/250-milliseconds-of-silence.mp3");
-    audio.loop = true;
-    audio.volume = 0.45;
-    audioRef.current = audio;
-
-    const realAudio = new Audio();
-    realAudio.src = "https://ia803404.us.archive.org/11/items/nightcall-collapsing-dream/Nightcall%20-%20Collapsing%20Dream.mp3";
-    realAudio.loop = true;
-    realAudio.volume = 0.45;
-    audioRef.current = realAudio;
-
-    return () => {
-      realAudio.pause();
-    };
-  }, []);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   const toggleMusic = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (!musicStarted) {
-      audio.play().catch(() => {});
-      setMusicStarted(true);
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+    if (!musicPlaying) {
+      iframe.contentWindow?.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
       setMusicPlaying(true);
-    } else if (musicPlaying) {
-      audio.pause();
-      setMusicPlaying(false);
     } else {
-      audio.play().catch(() => {});
-      setMusicPlaying(true);
+      iframe.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+      setMusicPlaying(false);
     }
   };
 
@@ -148,6 +126,15 @@ export default function Index() {
 
   return (
     <div className="cosmos-root">
+      {/* Hidden YouTube player */}
+      <iframe
+        ref={iframeRef}
+        style={{ position: "absolute", width: 0, height: 0, border: "none", opacity: 0, pointerEvents: "none" }}
+        src="https://www.youtube.com/embed/gHBLnBGiNS4?enablejsapi=1&loop=1&playlist=gHBLnBGiNS4&autoplay=0"
+        allow="autoplay"
+        title="music"
+      />
+
       {/* Music button */}
       <button className="music-btn" onClick={toggleMusic} title={musicPlaying ? "Пауза" : "Включить музыку"}>
         <span className="music-halo" />
