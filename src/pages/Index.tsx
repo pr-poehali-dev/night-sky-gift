@@ -130,7 +130,7 @@ export default function Index() {
       <iframe
         ref={iframeRef}
         style={{ position: "absolute", width: 0, height: 0, border: "none", opacity: 0, pointerEvents: "none" }}
-        src="https://www.youtube.com/embed/g1QSvr5Y3f4?enablejsapi=1&loop=1&playlist=g1QSvr5Y3f4&autoplay=0"
+        src="https://www.youtube.com/embed/22I-2kUd-Yc?enablejsapi=1&loop=1&playlist=22I-2kUd-Yc&autoplay=0"
         allow="autoplay"
         title="music"
       />
