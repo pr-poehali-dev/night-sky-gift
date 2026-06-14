@@ -50,27 +50,7 @@ interface StarData {
   y: number;
 }
 
-// Яблочки — тип A (с цветами), тип B (обнимашки), тип C (чиби котик)
-const APPLE_IMGS = [
-  "https://cdn.poehali.dev/projects/232a97c4-0a80-4140-9632-c78f7c6d85a9/bucket/4e1c06d6-eb60-4f9f-ad8d-2dea8e808758.jpg",
-  "https://cdn.poehali.dev/projects/232a97c4-0a80-4140-9632-c78f7c6d85a9/bucket/5bd67df3-2018-42e6-a2fb-9c4fcbad73f2.jpg",
-  "https://cdn.poehali.dev/projects/232a97c4-0a80-4140-9632-c78f7c6d85a9/bucket/b6d55292-9a36-4f7e-b408-69634fb8bcfd.jpeg",
-];
 
-const APPLES = [
-  // тип A (с цветами) × 3
-  { src: APPLE_IMGS[0], x: 2,  y: 8,  size: 90,  rot: -12, delay: 0   },
-  { src: APPLE_IMGS[0], x: 88, y: 60, size: 80,  rot: 8,   delay: 1.2 },
-  { src: APPLE_IMGS[0], x: 42, y: 88, size: 75,  rot: -6,  delay: 2.4 },
-  // тип B (обнимашки) × 3
-  { src: APPLE_IMGS[1], x: 90, y: 4,  size: 85,  rot: 10,  delay: 0.6 },
-  { src: APPLE_IMGS[1], x: 5,  y: 72, size: 78,  rot: -15, delay: 1.8 },
-  { src: APPLE_IMGS[1], x: 68, y: 82, size: 82,  rot: 5,   delay: 3.0 },
-  // тип C (котик Калеб) × 3
-  { src: APPLE_IMGS[2], x: 22, y: 80, size: 95,  rot: -8,  delay: 0.9 },
-  { src: APPLE_IMGS[2], x: 75, y: 38, size: 88,  rot: 14,  delay: 2.1 },
-  { src: APPLE_IMGS[2], x: 48, y: 70, size: 72,  rot: -4,  delay: 3.5 },
-];
 
 function generateDecoStars(count: number) {
   const stars = [];
@@ -201,25 +181,6 @@ export default function Index() {
           }}
         />
       ))}
-
-      {/* Floating apples */}
-      <div className="apples-layer" aria-hidden="true">
-        {APPLES.map((a, i) => (
-          <img
-            key={i}
-            src={a.src}
-            className="float-apple"
-            style={{
-              left: `${a.x}%`,
-              top: `${a.y}%`,
-              width: `${a.size}px`,
-              transform: `rotate(${a.rot}deg)`,
-              animationDelay: `${a.delay}s`,
-            }}
-            alt=""
-          />
-        ))}
-      </div>
 
       {/* Header */}
       <header className="cosmos-header">
