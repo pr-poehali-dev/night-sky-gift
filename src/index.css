@@ -57,22 +57,13 @@ body {
   position: relative;
   min-height: 100vh;
   background:
-    radial-gradient(
-      ellipse 70% 50% at 60% 35%,
-      rgba(80, 30, 160, 0.55) 0%,
-      transparent 65%
+    linear-gradient(
+      180deg,
+      rgba(5, 3, 20, 0.35) 0%,
+      rgba(8, 5, 30, 0.2) 50%,
+      rgba(5, 3, 20, 0.4) 100%
     ),
-    radial-gradient(
-      ellipse 45% 35% at 30% 55%,
-      rgba(60, 10, 130, 0.4) 0%,
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse 30% 20% at 80% 70%,
-      rgba(40, 5, 90, 0.3) 0%,
-      transparent 55%
-    ),
-    url("https://cdn.poehali.dev/projects/232a97c4-0a80-4140-9632-c78f7c6d85a9/bucket/0a6694c6-6e40-47c5-993e-28bc4745f0d2.jpg")
+    url("https://cdn.poehali.dev/projects/232a97c4-0a80-4140-9632-c78f7c6d85a9/bucket/94326697-a179-434f-818a-3c37600b4a12.jpg")
       center/cover no-repeat fixed,
     #03020a;
   overflow: hidden;
@@ -204,12 +195,13 @@ body {
 .cosmos-eyebrow {
   font-family: "Raleway", sans-serif;
   font-size: clamp(10px, 2vw, 13px);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.35em;
-  color: var(--cosmos-lavender);
+  color: #d4b8ff;
   text-transform: uppercase;
   margin-bottom: 20px;
-  opacity: 0.85;
+  opacity: 1;
+  text-shadow: 0 0 12px rgba(183, 148, 244, 0.7);
 }
 
 .cosmos-title {
@@ -257,32 +249,37 @@ body {
 .meta-label {
   font-family: "Raleway", sans-serif;
   font-size: clamp(8px, 1.2vw, 10px);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--cosmos-lavender);
-  opacity: 0.6;
+  color: #c4a0ff;
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(183, 148, 244, 0.5);
 }
 
 .meta-value {
   font-family: "Raleway", sans-serif;
   font-size: clamp(11px, 1.8vw, 14px);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.08em;
-  color: var(--cosmos-text-dim);
+  color: #e8e0ff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
 }
 
 .cosmos-subtitle {
   font-family: "Raleway", sans-serif;
   font-size: clamp(13px, 2.5vw, 17px);
-  font-weight: 300;
-  color: var(--cosmos-text-dim);
+  font-weight: 400;
+  color: #ddd8f5;
   margin-top: 28px;
   line-height: 1.85;
   letter-spacing: 0.05em;
   max-width: 560px;
   margin-left: auto;
   margin-right: auto;
+  text-shadow:
+    0 1px 8px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(30, 10, 60, 0.6);
 }
 
 /* ── STAR MAP ─────────────────────────────────── */
